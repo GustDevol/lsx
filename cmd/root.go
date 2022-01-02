@@ -124,6 +124,15 @@ func init() {
 }
 
 func ChdirToAlias(pathAlias string) {
+	moveToPath, err := filepath.Abs(pathAlias)
+	utils.CheckError(err)
+
+	// alias is a path?
+	if utils.PathExists(moveToPath) {
+		utils.WriteToFile(App.TempFile, moveToPath)
+		return
+	}
+
 	if len(App.Alias) == 0 {
 		utils.Warn("no alias found in records")
 		utils.Warn("get started by using 'set-alias' command")
