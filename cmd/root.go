@@ -33,7 +33,6 @@ var rootCmd = &cobra.Command{
 		if len(args) > 0 {
 			pathAlias := args[0]
 			ChdirToAlias(pathAlias)
-			utils.ClearScreen(platform)
 			os.Exit(0)
 		}
 		// if no args then prompt the user
